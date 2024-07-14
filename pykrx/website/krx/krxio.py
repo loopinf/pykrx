@@ -5,6 +5,10 @@ import time
 
 
 class KrxFutureIo(Get):
+    def __init__(self):
+        super().__init__()
+        self.headers.update({"Referer": "http://data.krx.co.kr/"})
+
     @property
     def url(self):
         return "http://data.krx.co.kr/comm/bldAttendant/executeForResourceBundle.cmd"
@@ -20,6 +24,10 @@ class KrxFutureIo(Get):
 
 
 class KrxWebIo(Post):
+    def __init__(self):
+        super().__init__()
+        self.headers.update({"Referer": "http://data.krx.co.kr/"})
+
     def read(self, **params):
         params.update(bld=self.bld)
         if 'strtDd' in params and 'endDd' in params:
